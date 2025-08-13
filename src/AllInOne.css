@@ -38,9 +38,9 @@
   justify-content: center;
   position: fixed;
   left: 50%;
-  bottom: 18px;
+  bottom: 28px;      /* 調高一點，讓按鈕中心在 navbar 上方 */
   transform: translateX(-50%);
-  z-index: 2000;
+  z-index: 2200;     /* 比 .bottom-navbar 的 2100 高 */
   cursor: pointer;
   transition: box-shadow 0.2s;
 }
@@ -133,4 +133,88 @@
 
 body {
   overflow-y: hidden;
+}
+.garbage-map-root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.garbage-map-title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 78px;
+  background: #ffae00;
+  color: #fff;
+  font-size: 26px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  letter-spacing: 2px;
+  box-shadow: 0 2px 8px #bbb;
+}
+
+.garbage-map-container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.bottom-navbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 56px;
+  background: #fff;
+  border-top: 1.5px solid #eee;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 2100;
+  box-shadow: 0 -2px 8px #eee;
+}
+
+.nav-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 15px;
+  padding: 0;
+  height: 100%;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.nav-btn i {
+  font-size: 22px;
+  margin-bottom: 2px;
+}
+
+.nav-btn.active,
+.nav-btn:active {
+  color: #ffae00;
+  font-weight: bold;
+}
+
+.tab-content {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 56px;
+  background: #fffbe7;
+  z-index: 2050;
+  min-height: 120px;
+  padding: 24px 16px 32px 16px;
+  box-shadow: 0 -2px 8px #eee;
+  font-size: 18px;
 }

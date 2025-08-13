@@ -95,6 +95,7 @@ export default function GarbageMap() {
   const [showList, setShowList] = useState(false);
   const [sortedList, setSortedList] = useState([]);
   const [activeIdx, setActiveIdx] = useState(0);
+  const [tab, setTab] = useState(0); // 0:地圖 1:垃圾車 2:公告 3:個人
   const mapRef = useRef(null);
   const listRef = useRef(null);
   useEffect(() => {
@@ -120,33 +121,15 @@ export default function GarbageMap() {
   }
 
   return (
-    <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
+    <div className="garbage-map-root">
       {/* 網頁標題 */}
-      <div
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '78px',
-          background: '#ffae00',
-          color: '#fff',
-          fontSize: '32px',
-          fontWeight: 'bold',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 3000,
-          letterSpacing: '2px',
-          boxShadow: '0 2px 8px #bbb'
-        }}
-      >
+      <div className="garbage-map-title">
         新北市定點丟垃圾地圖
       </div>
       <MapContainer
         center={center}
         zoom={12}
-        style={{ height: '100vh', width: '100vw' }}
+        className="garbage-map-container"
         ref={mapRef}
       >
         <TileLayer
@@ -239,6 +222,41 @@ export default function GarbageMap() {
           <i className="fa-solid fa-location-crosshairs"></i>
         )}
       </button>
+
+      {/* 新增：底部 Navbar */}
+      <nav className="bottom-navbar">
+        <button className={tab === 0 ? "nav-btn active" : "nav-btn"} onClick={() => setTab(0)}>
+          <i className="fa-solid fa-map"></i>
+          <span>地圖</span>
+        </button>
+        <button className={tab === 1 ? "nav-btn active" : "nav-btn"} onClick={() => setTab(1)}>
+          <i className="fa-solid fa-truck"></i>
+          <span>垃圾車</span>
+        </button>
+        <button className={tab === 2 ? "nav-btn active" : "nav-btn"} onClick={() => setTab(2)}>
+          <i className="fa-solid fa-bullhorn"></i>
+          <span>公告</span>
+        </button>
+        <button className={tab === 3 ? "nav-btn active" : "nav-btn"} onClick={() => setTab(3)}>
+          <i className="fa-solid fa-user"></i>
+          <span>個人</span>
+        </button>
+      </nav>
+
+      {/* 可根據 tab 顯示不同內容，這裡僅示範切換 */}
+      {tab === 0 && (
+        // 地圖內容（原本內容）
+        null
+      )}
+      {tab === 1 && (
+        <div className="tab-content">垃圾車資訊（可自訂內容）</div>
+      )}
+      {tab === 2 && (
+        <div className="tab-content">公告內容（可自訂內容）</div>
+      )}
+      {tab === 3 && (
+        <div className="tab-content">個人資訊（可自訂內容）</div>
+      )}
       {/* 橫式卡片清單 */}
       {showList && sortedList.length > 0 && (
         <div
