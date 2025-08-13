@@ -121,6 +121,28 @@ export default function GarbageMap() {
 
   return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
+      {/* 網頁標題 */}
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '78px',
+          background: '#ffae00',
+          color: '#fff',
+          fontSize: '32px',
+          fontWeight: 'bold',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 3000,
+          letterSpacing: '2px',
+          boxShadow: '0 2px 8px #bbb'
+        }}
+      >
+        新北市定點丟垃圾地圖
+      </div>
       <MapContainer
         center={center}
         zoom={12}
@@ -174,10 +196,8 @@ export default function GarbageMap() {
               if (mapRef.current && mapRef.current.flyTo) {
                 mapRef.current.flyTo([pos.coords.latitude, pos.coords.longitude], 16, { animate: true, duration: 1.2 });
               } else if (mapRef.current && mapRef.current._leaflet_id && mapRef.current.setView) {
-                // react-leaflet v3 fallback
                 mapRef.current.setView([pos.coords.latitude, pos.coords.longitude], 16);
               } else if (mapRef.current && mapRef.current.leafletElement && mapRef.current.leafletElement.flyTo) {
-                // react-leaflet v2 fallback
                 mapRef.current.leafletElement.flyTo([pos.coords.latitude, pos.coords.longitude], 16, { animate: true, duration: 1.2 });
               }
 
@@ -212,11 +232,28 @@ export default function GarbageMap() {
           );
         }}
         title="定位到目前位置"
+        style={{
+          width: 56,
+          height: 56,
+          borderRadius: '50%',
+          background: '#2196f3',
+          color: '#fff',
+          border: 'none',
+          boxShadow: '0 2px 8px #888888',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'fixed',
+          right: 24,
+          bottom: 18,
+          zIndex: 2000,
+          cursor: 'pointer',
+        }}
       >
         {geoError ? (
-          <span style={{ fontSize: 16, color: '#bbb', fontWeight: 'bold' }}>搜尋最近的地點</span>
+          <i className="fa-solid fa-circle-question error-icon"></i>
         ) : (
-          <span style={{ fontSize: 20, color: '#fff', fontWeight: 'bold' }}>點擊搜尋最近的地點</span>
+          <i className="fa-solid fa-location-crosshairs"></i>
         )}
       </button>
       {/* 橫式卡片清單 */}
@@ -249,7 +286,7 @@ export default function GarbageMap() {
             >
               <div className="location-list-card-title">{loc.village}</div>
               <div className="location-list-card-address">{loc.address}</div>
-              <div className="location-list-card-time">定點清運時間：{loc.time}</div>
+              <div className="location-list-card-time">定點丟垃圾時間：{loc.time} </div>
               <div className="location-list-card-distance">距離：{loc.distance < 1000 ? `${loc.distance.toFixed(0)} 公尺` : `${(loc.distance/1000).toFixed(2)} 公里`}</div>
             </div>
           ))}
