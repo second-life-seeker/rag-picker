@@ -45,7 +45,7 @@
   transition: box-shadow 0.2s;
 }
 .locate-btn .fa-location-crosshairs {
-  font-size: 28px;   /* 你可以調整這個數值，例如 32px、36px 等 */
+  font-size: 28px;
   line-height: 1;
 }
 .locate-btn:focus,
@@ -55,8 +55,8 @@
   box-shadow: 0 2px 8px #888, 0 0 0 4px #1976d2;
 }
 .locate-btn .error-icon {
-  color: #e53935;      /* 紅色 icon */
-  background: #fff;    /* 白底 */
+  color: #e53935;
+  background: #fff;
   border-radius: 50%;
   font-size: 28px;
   padding: 6px;

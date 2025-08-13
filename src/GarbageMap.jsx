@@ -232,23 +232,6 @@ export default function GarbageMap() {
           );
         }}
         title="定位到目前位置"
-        style={{
-          width: 56,
-          height: 56,
-          borderRadius: '50%',
-          background: '#2196f3',
-          color: '#fff',
-          border: 'none',
-          boxShadow: '0 2px 8px #888888',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          position: 'fixed',
-          right: 24,
-          bottom: 18,
-          zIndex: 2000,
-          cursor: 'pointer',
-        }}
       >
         {geoError ? (
           <i className="fa-solid fa-circle-question error-icon"></i>
