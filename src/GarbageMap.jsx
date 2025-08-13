@@ -96,6 +96,7 @@ export default function GarbageMap() {
   const [sortedList, setSortedList] = useState([]);
   const [activeIdx, setActiveIdx] = useState(0);
   const [tab, setTab] = useState(0); // 0:地圖 1:垃圾車 2:公告 3:個人
+  const [showForm, setShowForm] = useState(false);
   const mapRef = useRef(null);
   const listRef = useRef(null);
   useEffect(() => {
@@ -122,10 +123,42 @@ export default function GarbageMap() {
 
   return (
     <div className="garbage-map-root">
-      {/* 網頁標題 */}
+      {/* 標題列 */}
       <div className="garbage-map-title">
-        新北市定點丟垃圾地圖
+        <span>新北市定點丟垃圾地圖</span>
+        <button
+          className="garbage-map-title-icon"
+          onClick={() => setShowForm(true)}
+          title="意見回饋"
+        >
+          <i className="fa-solid fa-comment-dots"></i>
+          <span className="garbage-map-title-icon-label">意見表</span>
+        </button>
       </div>
+
+      {/* 彈跳視窗 */}
+      {showForm && (
+        <div className="garbage-map-modal-bg">
+          <div className="garbage-map-modal">
+            <button
+              className="garbage-map-modal-close"
+              onClick={() => setShowForm(false)}
+              title="關閉"
+            >
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLSdf4FM7AxNGYWIvAKIEr45b2Pd48kJdYzbnHk2PA85Ks9Hxfw/viewform?usp=dialog"
+              width="100%"
+              height="480"
+              style={{ border: 0 }}
+              title="意見回饋表單"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      )}
+
       <MapContainer
         center={center}
         zoom={12}
@@ -242,7 +275,7 @@ export default function GarbageMap() {
           <span>個人</span>
         </button>
       </nav>
-
+      <div className="garbage-map-bottom-mask"></div>
       {/* 可根據 tab 顯示不同內容，這裡僅示範切換 */}
       {tab === 0 && (
         // 地圖內容（原本內容）
