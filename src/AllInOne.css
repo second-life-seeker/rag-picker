@@ -37,13 +37,14 @@
   align-items: center;
   justify-content: center;
   position: fixed;
-  left: 50%;
-  bottom: 28px;      /* 調高一點，讓按鈕中心在 navbar 上方 */
+  left: 43%;
+  right: auto;
+  bottom: 22px;      /* 調高一點，讓按鈕中心在 navbar 上方 */
   transform: translateX(-50%);
   transform-origin: center;
   transform: scale(1);
   transition: transform 0.3s ease;
-  z-index: 2200;     /* 比 .bottom-navbar 的 2100 高 */
+  z-index: 5000;     /* 比 .bottom-navbar 的 2100 高 */
   cursor: pointer;
   transition: box-shadow 0.2s, transform 0.12s;
 }
@@ -146,23 +147,7 @@ body {
   height: 100vh;
 }
 
-.garbage-map-title {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 78px;
-  background: #ffae00;
-  color: #fff;
-  font-size: 26px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3000;
-  letter-spacing: 2px;
-  box-shadow: 0 2px 8px #bbb;
-}
+
 
 .garbage-map-container {
   height: 100vh;
@@ -176,7 +161,7 @@ body {
   height: 78px;
   background: #ffae00;
   color: #fff;
-  font-size: 26px;
+  font-size: 18px;
   font-weight: bold;
   display: flex;
   align-items: center;
